@@ -8,9 +8,7 @@ import {ERC1155Auth} from "../src/ERC1155Auth.sol";
 import {Roles} from "../src/Roles.sol";
 
 contract ERC1155AuthDeploy is Script {
-
     function run() public {
-
         uint256 deployPrivateKey = vm.envUint("DEPLOYER_KEY");
 
         vm.startBroadcast(deployPrivateKey);
@@ -19,7 +17,6 @@ contract ERC1155AuthDeploy is Script {
 
         console.log("ERC1155Auth deployed: ", address(keyToken));
     }
-
 }
 
 //forge script script/ERC1155AuthDeploy.s.sol:ERC1155AuthDeploy --broadcast --rpc-url wss://base-sepolia.drpc.org --verify --verifier etherscan --etherscan-api-key $ETHERSCAN_API_KEY

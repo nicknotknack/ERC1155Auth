@@ -8,7 +8,6 @@ import {ERC1155Auth} from "../src/ERC1155Auth.sol";
 import {Roles} from "../src/Roles.sol";
 
 contract ERC1155Mint is Script {
-
     function run(address _to, uint256 _amount, string memory _tokenUri) public {
         uint256 minterPrivateKey = vm.envUint("MINTER_KEY");
 
@@ -22,7 +21,6 @@ contract ERC1155Mint is Script {
 
         console.log(_amount, "of tokens, succsesfully minted to", _to);
     }
-
 }
 
 //forge script script/ERC1155Mint.s.sol:ERC1155Mint --broadcast --rpc-url https://sepolia.base.org --sig "run(address,uint256,string)" 0xAfd378303EaF596FE90e994B87A55E1ef9eEBdBd 10 "https://remilio.org/remilio/json/979"

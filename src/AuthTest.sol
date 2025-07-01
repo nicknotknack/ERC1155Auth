@@ -9,7 +9,7 @@ contract AuthTest {
 
     error UserDontHaveToken(uint256 _tokenId);
 
-    mapping(address=>bool) partisipations;
+    mapping(address => bool) partisipations;
 
     constructor(address _authAddress) {
         auth = IERC1155Auth(_authAddress);

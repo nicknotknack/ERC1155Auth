@@ -7,9 +7,7 @@ import {console} from "forge-std/console.sol";
 import {AuthTest} from "../src/AuthTest.sol";
 
 contract AuthTestDeploy is Script {
-
     function run() public {
-
         uint256 deployPrivateKey = vm.envUint("DEPLOYER_KEY");
         address erc1155auth = vm.envAddress("CONTRACT_ADDRESS");
 
@@ -19,7 +17,6 @@ contract AuthTestDeploy is Script {
 
         console.log("AuthTest deployed: ", address(auth));
     }
-
 }
 
 //forge script script/AuthTestDeploy.s.sol:AuthTestDeploy --broadcast --rpc-url wss://base-sepolia.drpc.org --verify --verifier etherscan --etherscan-api-key $ETHERSCAN_API_KEY

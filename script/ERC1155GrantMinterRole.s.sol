@@ -8,7 +8,6 @@ import {ERC1155Auth} from "../src/ERC1155Auth.sol";
 import {Roles} from "../src/Roles.sol";
 
 contract ERC1155GrantMinterRole is Script {
-
     function run(address _to) public {
         uint256 deployPrivateKey = vm.envUint("DEPLOYER_KEY");
 
@@ -22,7 +21,6 @@ contract ERC1155GrantMinterRole is Script {
 
         console.log("Role MINTER_ROLE granted to:", _to);
     }
-
 }
 
 //forge script script/ERC1155GrantMinterRole.s.sol:ERC1155GrantMinterRole --broadcast --rpc-url https://sepolia.base.org --sig "run(address)" 0xAfd378303EaF596FE90e994B87A55E1ef9eEBdBd
