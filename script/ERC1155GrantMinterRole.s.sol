@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Compatible with OpenZeppelin Contracts ^5.0.0
-pragma solidity ^0.8.27;
+pragma solidity ^0.8.30;
 
 import {Script} from "forge-std/Script.sol";
 import {console} from "forge-std/console.sol";
@@ -24,3 +24,5 @@ contract ERC1155GrantMinterRole is Script {
     }
 
 }
+
+//forge script script/ERC1155GrantMinterRole.s.sol:ERC1155GrantMinterRole --broadcast --rpc-url https://sepolia.base.org --sig "run(address)" 0xAfd378303EaF596FE90e994B87A55E1ef9eEBdBd

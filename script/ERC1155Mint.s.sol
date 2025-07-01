@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Compatible with OpenZeppelin Contracts ^5.0.0
-pragma solidity ^0.8.27;
+pragma solidity ^0.8.30;
 
 import {Script} from "forge-std/Script.sol";
 import {console} from "forge-std/console.sol";
@@ -24,3 +24,5 @@ contract ERC1155Mint is Script {
     }
 
 }
+
+//forge script script/ERC1155Mint.s.sol:ERC1155Mint --broadcast --rpc-url https://sepolia.base.org --sig "run(address,uint256,string)" 0xAfd378303EaF596FE90e994B87A55E1ef9eEBdBd 10 "https://remilio.org/remilio/json/979"
