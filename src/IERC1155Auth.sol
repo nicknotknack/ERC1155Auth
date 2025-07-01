@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: MIT
+// Compatible with OpenZeppelin Contracts ^5.0.0
+pragma solidity ^0.8.27;
+
+interface IERC1155Auth {
+    function hasToken(address _user, uint256 _tokenId) external view returns(bool);
+    function updateTokenUri(uint256 _tokenId, string memory _newTokenUri) external;
+}
