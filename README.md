@@ -1,66 +1,73 @@
-## Foundry
+## 🔐 `ERC1155Auth` – Token-Based Authentication
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+**ERC1155Auth** – educational smart contract uses ERC1155 tokens to authorize actions — enabling new types of permission systems for dApps. Built with **Solidity** and the **Foundry** during [Solidity Bootcamp](https://bootcamp.solidity.university/).  
 
-Foundry consists of:
+`ERC1155Auth.sol`–custom smart contract solution that implements token-based authentication  
+`AuthTest.sol`–shows how `ERC1155Auth.sol` can be used for authentification  
+`./test/*`–tests for `ERC1155Auth.sol`  
+`./script/*`–deployment and regular scripts for ERC1155Auth contracts
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+---
 
-## Documentation
+## 🚀 Getting Started
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```bash
+gh repo clone SolidityUniversity/ERC1155Auth
+cd ERC1155Auth
+forge install
+forge build
 ```
 
-### Test
+---
 
-```shell
-$ forge test
-```
+## 📦 Scripts
 
-### Format
+‼️ Prepare your `.env` according `example.env`
 
-```shell
-$ forge fmt
-```
+### 1. Deploy `ERC1155Auth`
 
-### Gas Snapshots
+Deploys the core ERC-1155 authentication contract.
 
-```shell
-$ forge snapshot
-```
+`forge script script/ERC1155AuthDeploy.s.sol:ERC1155AuthDeploy \
+  --broadcast \
+  --rpc-url wss://base-sepolia.drpc.org \
+  --verify \
+  --verifier etherscan \
+  --etherscan-api-key $ETHERSCAN_API_KEY`
 
-### Anvil
+### 2. Deploy `AuthTest`
 
-```shell
-$ anvil
-```
+`forge script script/AuthTestDeploy.s.sol:AuthTestDeploy \
+  --broadcast \
+  --rpc-url wss://base-sepolia.drpc.org \
+  --verify \
+  --verifier etherscan \
+  --etherscan-api-key $ETHERSCAN_API_KEY
+`
 
-### Deploy
+### 3. Grant Minter Role
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+`forge script script/ERC1155GrantMinterRole.s.sol:ERC1155GrantMinterRole \
+  --broadcast \
+  --rpc-url https://sepolia.base.org \
+  --sig "run(address)" <MINTER_ADDRESS>
+`
 
-### Cast
+### 4. Mint Token
 
-```shell
-$ cast <subcommand>
-```
+`forge script script/ERC1155Mint.s.sol:ERC1155Mint \
+  --broadcast \
+  --rpc-url https://sepolia.base.org \
+  --sig "run(address,uint256,string)" <TO_ADDRESS> <TOKEN_ID> "<URI>"
+`
+  Example: `forge script script/ERC1155Mint.s.sol:ERC1155Mint \
+  --broadcast \
+  --rpc-url https://sepolia.base.org \
+  --sig "run(address,uint256,string)" 0xRecipientAddress 10 "ipfs://example/metadata.json"
+`
 
-### Help
+---
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Feel free to contribute or open issues to improve the project 💡
+
+Created with 💕 by 🎓 [Solidity University](https://solidity.university)
